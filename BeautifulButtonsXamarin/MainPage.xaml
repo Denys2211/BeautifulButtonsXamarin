@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BeautifulButtonsXamarin.MainPage"
+             xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:sh="http://sharpnado.com" xmlns:vm="clr-namespace:BeautifulButtonsXamarin"
+             BackgroundColor="WhiteSmoke">
+
+    <ContentPage.BindingContext>
+        <vm:MainPageViewModel/>
+    </ContentPage.BindingContext>
+         <Grid ColumnDefinitions="*,1,*" 
+               HeightRequest="80"
+               WidthRequest="400"
+               VerticalOptions="CenterAndExpand"
+               HorizontalOptions="CenterAndExpand">
+                <sh:Shadows Padding="20,20,20,20"
+                            CornerRadius="15">
+                    <sh:Shadows.Shades>
+                        <sh:ImmutableShades>
+                            <sh:Shade BlurRadius="10"
+                                      Opacity="1"
+                                      Offset="-10,-10"
+                                      Color="White" />
+                            <sh:Shade BlurRadius="10"
+                                      Opacity="1"
+                                      Offset="6,6"
+                                      Color="#cfcfd4" />
+                        </sh:ImmutableShades>
+                    </sh:Shadows.Shades>
+                    <pancakeView:PancakeView CornerRadius="15"
+                                             BackgroundGradientStartPoint="0,0"
+                                             BackgroundGradientEndPoint="1,1"
+                                             x:Name="PancakeViewDynamic">
+                        <pancakeView:PancakeView.BackgroundGradientStops>
+                            <pancakeView:GradientStopCollection>
+                                <pancakeView:GradientStop Offset="0" x:Name="GradientOneDynamic" Color="#ffffff" />
+                                <pancakeView:GradientStop Offset="1" x:Name="GradientTwoDynamic" Color="#d8d8db" />
+                            </pancakeView:GradientStopCollection>
+                        </pancakeView:PancakeView.BackgroundGradientStops>
+                        <StackLayout HorizontalOptions="CenterAndExpand"
+                                     VerticalOptions="CenterAndExpand"
+                                     Padding="0"
+                                     Margin="0">
+                        <Label Text="Dynamic"
+                               HorizontalOptions="CenterAndExpand"
+                               VerticalOptions="CenterAndExpand"
+                               TextColor="Gray"
+                               TextTransform="Uppercase"/>
+                            <Frame HeightRequest="10"
+                                   WidthRequest="10"
+                                   Padding="0"
+                                   Margin="0"
+                                   CornerRadius="5"
+                                   HasShadow="False"
+                                   HorizontalOptions="CenterAndExpand"
+                                   VerticalOptions="CenterAndExpand">
+                                <Frame.Triggers>
+                                    <DataTrigger TargetType="Frame"
+                                                 Binding="{Binding IsStatic}"
+                                                 Value="true">
+                                        <Setter Property="BackgroundColor" Value="DarkGray"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Frame"
+                                                 Binding="{Binding IsStatic}"
+                                                 Value="false">
+                                        <Setter Property="BackgroundColor" Value="#32cd32"/>
+                                    </DataTrigger>
+                                </Frame.Triggers>
+                            </Frame>
+                        </StackLayout>
+                        <pancakeView:PancakeView.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SetChoiseDynamicTypeCommand}" />
+                            </pancakeView:PancakeView.GestureRecognizers>
+                    </pancakeView:PancakeView>
+                </sh:Shadows>
+                <sh:Shadows Padding="20,20,20,20"
+                            Grid.Column="2"
+                            CornerRadius="15">
+                    <sh:Shadows.Shades>
+                        <sh:ImmutableShades>
+                            <sh:Shade  BlurRadius="10"
+                                       Opacity="1"
+                                       Offset="-10,-10"
+                                       Color="White" />
+                            <sh:Shade  BlurRadius="10"
+                                       Opacity="1"
+                                       Offset="6,6"
+                                       Color="#cfcfd4" />
+                        </sh:ImmutableShades>
+                    </sh:Shadows.Shades>
+                    <pancakeView:PancakeView Margin="-6,0,0,0"
+                                             CornerRadius="15"
+                                             BackgroundGradientStartPoint="0,0"
+                                             BackgroundGradientEndPoint="1,1"
+                                             BackgroundColor="WhiteSmoke"
+                                             x:Name="PancakeViewStatic">
+                        <pancakeView:PancakeView.BackgroundGradientStops>
+                            <pancakeView:GradientStopCollection>
+                                <pancakeView:GradientStop Offset="0" x:Name="GradientOneStatic" Color="#ffffff" />
+                                <pancakeView:GradientStop Offset="1" x:Name="GradientTwoStatic"  Color="#d8d8db"/>
+                            </pancakeView:GradientStopCollection>
+                        </pancakeView:PancakeView.BackgroundGradientStops>
+                        <StackLayout HorizontalOptions="CenterAndExpand"
+                                     VerticalOptions="CenterAndExpand"
+                                     Padding="0"
+                                     Margin="0">
+                            <Label Text="Static"
+                                   HorizontalOptions="CenterAndExpand"
+                                   VerticalOptions="CenterAndExpand"
+                                   TextColor="Gray"
+                                   TextTransform="Uppercase"/>
+                            <Frame HeightRequest="10"
+                                   WidthRequest="10"
+                                   Padding="0"
+                                   Margin="0"
+                                   CornerRadius="5"
+                                   HasShadow="False"
+                                   HorizontalOptions="CenterAndExpand"
+                                   VerticalOptions="CenterAndExpand">
+                                <Frame.Triggers>
+                                    <DataTrigger TargetType="Frame"
+                                                 Binding="{Binding IsStatic}"
+                                                 Value="true">
+                                        <Setter Property="BackgroundColor" Value="#32cd32"/>
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Frame"
+                                                 Binding="{Binding IsStatic}"
+                                                 Value="false">
+                                        <Setter Property="BackgroundColor" Value="DarkGray"/>
+                                    </DataTrigger>
+                                </Frame.Triggers>
+                            </Frame>
+                        </StackLayout>
+                        <pancakeView:PancakeView.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SetChoiseStaticTypeCommand}"/>
+                            </pancakeView:PancakeView.GestureRecognizers>
+                    </pancakeView:PancakeView>
+                </sh:Shadows>
+            </Grid>
+
+</ContentPage>
